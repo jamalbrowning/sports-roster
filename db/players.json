@@ -1,0 +1,62 @@
+{
+  "player1" : {
+    "imageUrl" : "https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3468.png",
+    "name" : "Russell Westbrook",
+    "position" : "Point Guard",
+    "uid" : "BtH34gnGEJW67KiUqngXp8MQsvw1"
+  },
+  "player2" : {
+    "imageUrl" : "https://ca-times.brightspotcdn.com/dims4/default/e5ae987/2147483647/strip/true/crop/4758x3172+0+0/resize/1486x991!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F2a%2Fef%2F51d8dfcb4e3b87b34ddc529c8c38%2Fhttps-delivery.gettyimages.com%2Fdownloads%2F1210245387.jpg",
+    "name" : "Lebron James",
+    "position" : "Power Forward",
+    "uid" : "BtH34gnGEJW67KiUqngXp8MQsvw1"
+  },
+  "player3" : {
+    "imageUrl" : "https://img.bleacherreport.net/img/images/photos/003/847/755/hi-res-ba25c32ae8faa1fa0364e4bdb288040e_crop_north.jpg?1579212610&w=3072&h=2048",
+    "name" : "John Morant",
+    "position" : "Point Guard",
+    "uid" : "BtH34gnGEJW67KiUqngXp8MQsvw1"
+  },
+  "player4" : {
+    "imageUrl" : "https://images.wsj.net/im-146543?width=1280&size=1",
+    "name" : "Zion Williamson",
+    "position" : "Power Forward",
+    "uid" : "BtH34gnGEJW67KiUqngXp8MQsvw1"
+  },
+  "player5" : {
+    "imageUrl" : "https://i1.wp.com/www.pappaspost.com/wp-content/uploads/2020/08/Giannis-Antetokounmpo.jpg?fit=1170%2C780&ssl=1",
+    "name" : "Giannis Antetokounmpo",
+    "position" : "Small Forward",
+    "uid" : "BtH34gnGEJW67KiUqngXp8MQsvw1"
+  },
+  "player6" : {
+    "imageUrl" : "https://www.masslive.com/resizer/tSQgwQyme3dkUREI4u0UwG0InPs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/I2Z63IATXFDLJB7R5POBQQSK74.jpg",
+    "name" : "Jayson Tatum",
+    "position" : "Small Forward",
+    "uid" : "BtH34gnGEJW67KiUqngXp8MQsvw1"
+  },
+  "player7" : {
+    "imageUrl" : "https://clutchpoints.com/wp-content/uploads/2019/05/Jaylen-Brown-Celtics.jpg",
+    "name" : "Jaylen Brown",
+    "position" : "Shooting Guard",
+    "uid" : "BtH34gnGEJW67KiUqngXp8MQsvw1"
+  },
+  "player8" : {
+    "imageUrl" : "https://www.dallassportsfanatic.com/wp-content/uploads/2019/10/Dallas-Sports-Fanatic-14-of-43.jpg",
+    "name" : "Luka Doncic",
+    "position" : "Point Guard / Small Forward",
+    "uid" : "BtH34gnGEJW67KiUqngXp8MQsvw1"
+  },
+  "player9" : {
+    "imageUrl" : "https://d2gi3dtq6gguao.cloudfront.net/uploads/picture/image/71/trae-young.jpg",
+    "name" : "Trae Young",
+    "position" : "Point Guard",
+    "uid" : "BtH34gnGEJW67KiUqngXp8MQsvw1"
+  },
+  "player10" : {
+    "imageUrl" : "https://www.nba.com/kings/sites/kings/files/foxupdate_0.jpg?w=756&h=399",
+    "name" : "De'Aaron Fox",
+    "position" : "Point Guard",
+    "uid" : "BtH34gnGEJW67KiUqngXp8MQsvw1"
+  }
+}
