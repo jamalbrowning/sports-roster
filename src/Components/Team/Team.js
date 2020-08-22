@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import User from '../User/User';
 
@@ -6,6 +7,10 @@ import authData from '../../helpers/data/authData';
 import userData from '../../helpers/data/userData';
 
 class Team extends React.Component {
+  static propTypes = {
+    setSingleUser: PropTypes.func.isRequired,
+  }
+
   state = {
     users: [],
   }
@@ -18,8 +23,9 @@ class Team extends React.Component {
 
   render() {
     const { users } = this.state;
+    const { setSingleUser } = this.props;
 
-    const userCard = users.map((user) => <User key={user.id} user={user}/>);
+    const userCard = users.map((user) => <User key={user.id} user={user} setSingleUser={setSingleUser}/>);
 
     return (
       <div className="card-columns users">
