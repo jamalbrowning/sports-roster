@@ -15,6 +15,7 @@ class User extends React.Component {
     return (
       <div className="card text-center">
         <h3>{user.name}</h3>
+        <button className="btn btn-danger">View Roster</button>
       </div>
     );
   }
