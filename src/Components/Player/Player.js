@@ -20,8 +20,8 @@ class Player extends React.Component {
 
   editPlayerEvent = (e) => {
     e.preventDefault();
-    const { editAPlayer } = this.props;
-    editAPlayer();
+    const { editAPlayer, player } = this.props;
+    editAPlayer(player);
   }
 
   render() {

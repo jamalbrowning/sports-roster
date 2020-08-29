@@ -10,6 +10,7 @@ class Team extends React.Component {
   state = {
     players: [],
     formOpen: false,
+    editPlayer: {},
   }
 
   getPlayers = () => {
@@ -39,8 +40,9 @@ class Team extends React.Component {
       .catch((err) => console.error('delete player didnt work', err));
   }
 
-  editAPlayer = () => {
-    this.setState({formOpen: true });
+  editAPlayer = (playerToEdit) => {
+    console.warn(playerToEdit);
+    this.setState({ formOpen: true, editPlayer: playerToEdit });
   }
 
   render() {
