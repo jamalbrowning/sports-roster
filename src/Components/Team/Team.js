@@ -45,6 +45,15 @@ class Team extends React.Component {
     this.setState({ formOpen: true, editPlayer: playerToEdit });
   }
 
+  updatePlayer = (playerId, editedPlayer) => {
+    playersData.updatePlayer(playerId, editedPlayer)
+      .then(() => {
+        this.getPlayers();
+        this.setState({ formOpen: false, editPlayer: {} });
+      })
+      .catch((err) => console.error('something happened to update', err));
+  }
+
   render() {
     const { players, formOpen, editPlayer } = this.state;
 
@@ -53,7 +62,7 @@ class Team extends React.Component {
     return (
       <div>
         <button className="btn btn-warning" onClick={() => { this.setState({ formOpen: !formOpen }); }}><i className="far fa-plus-square"></i></button>
-        { formOpen ? <PlayerForm createPlayer={this.creatPlayer} editingPlayer={editPlayer} /> : '' }
+        { formOpen ? <PlayerForm createPlayer={this.creatPlayer} editingPlayer={editPlayer} updatePlayer={this.updatePlayer}/> : '' }
         <div className="card-columns users">
           { playerCard }
         </div>

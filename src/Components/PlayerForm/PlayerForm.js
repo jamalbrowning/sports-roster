@@ -13,6 +13,7 @@ class PlayerForm extends React.Component {
   static propTypes = {
     createPlayer: PropTypes.func.isRequired,
     editingPlayer: PropTypes.object.isRequired,
+    updatePlayer: PropTypes.func.isRequired,
   }
 
   state = {
@@ -65,6 +66,21 @@ class PlayerForm extends React.Component {
     createPlayer(newPlayer);
   }
 
+  editPlayerEvent = (e) => {
+    e.preventDefault();
+    const { name, position, imageUrl } = this.state;
+    const { updatePlayer, editingPlayer } = this.props;
+
+    const myPlayerChanges = {
+      name,
+      position,
+      imageUrl,
+      uid: authData.getUid(),
+    };
+
+    updatePlayer(editingPlayer.id, myPlayerChanges);
+  }
+
   render() {
     const {
       name,
@@ -72,6 +88,7 @@ class PlayerForm extends React.Component {
       position,
       isEditing,
     } = this.state;
+
     return (
       <form className="col-6 offset-3">
         <div className="form-group">
@@ -104,12 +121,12 @@ class PlayerForm extends React.Component {
             id="playerPosition"
             placeholder="Enter Player Position"
             value={position}
-            onChange={this.changeNameEvent}
+            onChange={this.changePositionEvent}
           />
         </div>
         {
           isEditing
-            ? <button className="btn btn-light"> Edit Player</button>
+            ? <button className="btn btn-light" onClick={this.editPlayerEvent}> Edit Player</button>
             : <button className="btn btn-dark" onClick={this.savePlayerEvent}>Save Player</button>
         }
       </form>
