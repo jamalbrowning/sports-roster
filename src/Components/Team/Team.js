@@ -6,6 +6,8 @@ import PlayerForm from '../PlayerForm/PlayerForm';
 import authData from '../../helpers/data/authData';
 import playersData from '../../helpers/data/playerData';
 
+import './Team.scss';
+
 class Team extends React.Component {
   state = {
     players: [],
@@ -63,7 +65,7 @@ class Team extends React.Component {
       <div>
         <button className="btn btn-warning" onClick={() => { this.setState({ formOpen: !formOpen }); }}><i className="far fa-plus-square"></i></button>
         { formOpen ? <PlayerForm createPlayer={this.creatPlayer} editingPlayer={editPlayer} updatePlayer={this.updatePlayer}/> : '' }
-        <div className="card-columns users">
+        <div className="cardContainer users">
           { playerCard }
         </div>
       </div>
