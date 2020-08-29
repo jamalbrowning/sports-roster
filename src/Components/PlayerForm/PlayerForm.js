@@ -12,12 +12,42 @@ import authData from '../../helpers/data/authData';
 class PlayerForm extends React.Component {
   static propTypes = {
     createPlayer: PropTypes.func.isRequired,
+    updatePlayer: PropTypes.func.isRequired,
+    playerThatsEditing: PropTypes.object.isRequired,
   }
 
   state = {
     imageUrl: '',
     name: '',
     position: '',
+    isEditing: false,
+  }
+
+  componentDidMount() {
+    const { playerThatsEditing } = this.props;
+    if (playerThatsEditing.name) {
+      this.state({
+        imageUrl: playerThatsEditing.imageUrl,
+        name: playerThatsEditing.name,
+        position: playerThatsEditing.position,
+        isEditing: true,
+      });
+    }
+  }
+
+  editPlayerEvent = (e) => {
+    e.preventDefault();
+    const { imageUrl, name, position } = this.state;
+    const { updatePlayer, playerThatsEditing } = this.props;
+
+    const myPlayerWithChanges = {
+      imageUrl,
+      name,
+      position,
+      uid: authData.getUid(),
+    };
+
+    updatePlayer(playerThatsEditing.id, myPlayerWithChanges);
   }
 
   changeNameEvent = (e) => {
@@ -52,6 +82,13 @@ class PlayerForm extends React.Component {
   }
 
   render() {
+    const {
+      imageUrl,
+      name,
+      position,
+      isEditing,
+    } = this.state;
+
     return (
       <form className="col-6 offset-3">
         <div className="form-group">
@@ -61,6 +98,7 @@ class PlayerForm extends React.Component {
             className="form-control"
             id="playerImageUrl"
             placeholder="Enter Image Url"
+            value={imageUrl}
             onChange={this.changeImageUrlEvent}
           />
         </div>
@@ -71,6 +109,7 @@ class PlayerForm extends React.Component {
             className="form-control"
             id="playerName"
             placeholder="Enter Player Name"
+            value={name}
             onChange={this.changeNameEvent}
           />
         </div>
@@ -81,10 +120,15 @@ class PlayerForm extends React.Component {
             className="form-control"
             id="playerPosition"
             placeholder="Enter Player Position"
+            value={position}
             onChange={this.changeNameEvent}
           />
         </div>
-        <button className="btn btn-dark" onClick={this.savePlayerEvent}>Save Player</button>
+        {
+          isEditing
+            ? <button className="btn btn-light" onClick={this.editPlayerEvent}>Edit Player</button>
+            : <button className="btn btn-dark" onClick={this.savePlayerEvent}>Save Player</button>
+        }
       </form>
     );
   }
