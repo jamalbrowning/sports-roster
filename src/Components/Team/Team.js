@@ -39,10 +39,14 @@ class Team extends React.Component {
       .catch((err) => console.error('delete player didnt work', err));
   }
 
+  editAPlayer = () => {
+    this.setState({formOpen: true });
+  }
+
   render() {
     const { players, formOpen } = this.state;
 
-    const playerCard = players.map((player) => <Player player={player} key={player.id} deletePlayer={this.deletePlayer}/>);
+    const playerCard = players.map((player) => <Player player={player} key={player.id} deletePlayer={this.deletePlayer} editAPlayer={this.editAPlayer}/>);
 
     return (
       <div>
