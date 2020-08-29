@@ -46,14 +46,14 @@ class Team extends React.Component {
   }
 
   render() {
-    const { players, formOpen } = this.state;
+    const { players, formOpen, editPlayer } = this.state;
 
     const playerCard = players.map((player) => <Player player={player} key={player.id} deletePlayer={this.deletePlayer} editAPlayer={this.editAPlayer}/>);
 
     return (
       <div>
         <button className="btn btn-warning" onClick={() => { this.setState({ formOpen: !formOpen }); }}><i className="far fa-plus-square"></i></button>
-        { formOpen ? <PlayerForm createPlayer={this.creatPlayer}/> : '' }
+        { formOpen ? <PlayerForm createPlayer={this.creatPlayer} editingPlayer={editPlayer} /> : '' }
         <div className="card-columns users">
           { playerCard }
         </div>

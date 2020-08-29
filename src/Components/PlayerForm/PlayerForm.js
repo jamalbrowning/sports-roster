@@ -12,12 +12,26 @@ import authData from '../../helpers/data/authData';
 class PlayerForm extends React.Component {
   static propTypes = {
     createPlayer: PropTypes.func.isRequired,
+    editingPlayer: PropTypes.object.isRequired,
   }
 
   state = {
     imageUrl: '',
     name: '',
     position: '',
+    isEditing: false,
+  }
+
+  componentDidMount() {
+    const { editingPlayer } = this.props;
+    if (editingPlayer.name) {
+      this.setState({
+        name: editingPlayer.name,
+        imageUrl: editingPlayer.imageUrl,
+        position: editingPlayer.position,
+        isEditing: true,
+      });
+    }
   }
 
   changeNameEvent = (e) => {
@@ -52,6 +66,12 @@ class PlayerForm extends React.Component {
   }
 
   render() {
+    const {
+      name,
+      imageUrl,
+      position,
+      isEditing,
+    } = this.state;
     return (
       <form className="col-6 offset-3">
         <div className="form-group">
@@ -61,6 +81,7 @@ class PlayerForm extends React.Component {
             className="form-control"
             id="playerImageUrl"
             placeholder="Enter Image Url"
+            value={imageUrl}
             onChange={this.changeImageUrlEvent}
           />
         </div>
@@ -71,6 +92,7 @@ class PlayerForm extends React.Component {
             className="form-control"
             id="playerName"
             placeholder="Enter Player Name"
+            value={name}
             onChange={this.changeNameEvent}
           />
         </div>
@@ -81,10 +103,15 @@ class PlayerForm extends React.Component {
             className="form-control"
             id="playerPosition"
             placeholder="Enter Player Position"
+            value={position}
             onChange={this.changeNameEvent}
           />
         </div>
-        <button className="btn btn-dark" onClick={this.savePlayerEvent}>Save Player</button>
+        {
+          isEditing
+            ? <button className="btn btn-light"> Edit Player</button>
+            : <button className="btn btn-dark" onClick={this.savePlayerEvent}>Save Player</button>
+        }
       </form>
     );
   }
