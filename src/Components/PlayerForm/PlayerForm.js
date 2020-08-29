@@ -121,7 +121,7 @@ class PlayerForm extends React.Component {
             id="playerPosition"
             placeholder="Enter Player Position"
             value={position}
-            onChange={this.changeNameEvent}
+            onChange={this.changePositionEvent}
           />
         </div>
         {
