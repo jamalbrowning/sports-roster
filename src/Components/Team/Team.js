@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Player from '../Player/Player';
+import PlayerForm from '../PlayerForm/PlayerForm';
 
 import authData from '../../helpers/data/authData';
 import playersData from '../../helpers/data/playerData';
@@ -8,6 +9,7 @@ import playersData from '../../helpers/data/playerData';
 class Team extends React.Component {
   state = {
     players: [],
+    formOpen: false,
   }
 
   getPlayers = () => {
@@ -20,6 +22,15 @@ class Team extends React.Component {
     this.getPlayers();
   }
 
+  creatPlayer = (newPlayer) => {
+    playersData.createPlayer(newPlayer)
+      .then(() => {
+        this.getPlayers();
+        this.setState({ formOpen: false });
+      })
+      .catch((err) => console.error('create player failed', err));
+  };
+
   deletePlayer = (playerId) => {
     playersData.deletePlayer(playerId)
       .then(() => {
@@ -29,13 +40,17 @@ class Team extends React.Component {
   }
 
   render() {
-    const { players } = this.state;
+    const { players, formOpen } = this.state;
 
     const playerCard = players.map((player) => <Player player={player} key={player.id} deletePlayer={this.deletePlayer}/>);
 
     return (
-      <div className="card-columns users">
-        { playerCard }
+      <div>
+        <button className="btn btn-warning" onClick={() => { this.setState({ formOpen: !formOpen }); }}><i className="far fa-plus-square"></i></button>
+        { formOpen ? <PlayerForm createPlayer={this.creatPlayer}/> : '' }
+        <div className="card-columns users">
+          { playerCard }
+        </div>
       </div>
     );
   }
