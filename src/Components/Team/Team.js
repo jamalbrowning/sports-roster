@@ -10,6 +10,7 @@ class Team extends React.Component {
   state = {
     players: [],
     formOpen: false,
+    editPlayer: {},
   }
 
   getPlayers = () => {
@@ -39,15 +40,29 @@ class Team extends React.Component {
       .catch((err) => console.error('delete player didnt work', err));
   }
 
-  render() {
-    const { players, formOpen } = this.state;
+  editAPlayer = (playerToEdit) => {
+    console.warn(playerToEdit);
+    this.setState({ formOpen: true, editPlayer: playerToEdit });
+  }
 
-    const playerCard = players.map((player) => <Player player={player} key={player.id} deletePlayer={this.deletePlayer}/>);
+  updatePlayer = (playerId, editedPlayer) => {
+    playersData.updatePlayer(playerId, editedPlayer)
+      .then(() => {
+        this.getPlayers();
+        this.setState({ formOpen: false, editPlayer: {} });
+      })
+      .catch((err) => console.error('something happened to update', err));
+  }
+
+  render() {
+    const { players, formOpen, editPlayer } = this.state;
+
+    const playerCard = players.map((player) => <Player player={player} key={player.id} deletePlayer={this.deletePlayer} editAPlayer={this.editAPlayer}/>);
 
     return (
       <div>
         <button className="btn btn-warning" onClick={() => { this.setState({ formOpen: !formOpen }); }}><i className="far fa-plus-square"></i></button>
-        { formOpen ? <PlayerForm createPlayer={this.creatPlayer}/> : '' }
+        { formOpen ? <PlayerForm createPlayer={this.creatPlayer} editingPlayer={editPlayer} updatePlayer={this.updatePlayer}/> : '' }
         <div className="card-columns users">
           { playerCard }
         </div>
